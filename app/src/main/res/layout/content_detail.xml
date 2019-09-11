@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.zaytsevaa.eptaskmanager.viewmodel.MainViewModel" />
+        
+        <variable
+            name="handler"
+            type="com.zaytsevaa.eptaskmanager.ui.TextOnClickHandler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".DetailActivity"
+        tools:showIn="@layout/activity_detail">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/apt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etvAptName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.mCurrentTask.aptName}"
+                android:hint="Apt_name"
+                android:minWidth="128dp"
+                android:textAlignment="center" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/task_get_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_received"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/apt_name" />
+
+        <TextView
+            android:id="@+id/task_get_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.mCurrentTask.taskGetTime.toLocaleString()}"
+            android:onClick="@{handler::onClick}"
+            android:textColor="@color/colorPrimary"
+            android:hint="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/task_get_time_label" />
+
+        <TextView
+            android:id="@+id/start_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/departed"
+            app:layout_constraintStart_toStartOf="@id/task_get_time_label"
+            app:layout_constraintTop_toBottomOf="@id/task_get_time_label" />
+
+        <TextView
+            android:id="@+id/start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.mCurrentTask.taskStartTime.toLocaleString()}"
+            android:onClick="@{handler::onClick}"
+            android:textColor="@color/colorPrimary"
+            android:hint="date"
+            app:layout_constraintEnd_toEndOf="@id/task_get_time"
+            app:layout_constraintTop_toTopOf="@id/start_time_label" />
+
+        <TextView
+            android:id="@+id/arrival_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/arrived"
+            app:layout_constraintStart_toStartOf="@id/task_get_time_label"
+            app:layout_constraintTop_toBottomOf="@id/start_time_label" />
+
+        <TextView
+            android:id="@+id/arrival_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.mCurrentTask.taskArrivalTime.toLocaleString()}"
+            android:onClick="@{handler::onClick}"
+            android:textColor="@color/colorPrimary"
+            android:hint="date"
+            app:layout_constraintEnd_toEndOf="@id/task_get_time"
+            app:layout_constraintTop_toTopOf="@id/arrival_time_label" />
+
+        <TextView
+            android:id="@+id/apt_closed_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/closed"
+            android:visibility="@{(viewModel.mCurrentTask.taskAptCloseTime == null) ? View.GONE : View.VISIBLE}"
+            app:layout_constraintStart_toStartOf="@id/task_get_time_label"
+            app:layout_constraintTop_toBottomOf="@id/arrival_time_label" />
+
+        <TextView
+            android:id="@+id/apt_closed_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{(viewModel.mCurrentTask.taskAptCloseTime == null) ? View.GONE : View.VISIBLE}"
+            android:text="@{viewModel.mCurrentTask.taskAptCloseTime.toLocaleString()}"
+            android:onClick="@{handler::onClick}"
+            android:textColor="@color/colorPrimary"
+            android:hint="date"
+            app:layout_constraintEnd_toEndOf="@id/task_get_time"
+            app:layout_constraintTop_toTopOf="@id/apt_closed_time_label" />
+
+        <TextView
+            android:id="@+id/apt_open_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{(viewModel.mCurrentTask.taskAptOpenTime == null) ? View.GONE : View.VISIBLE}"
+            android:text="@string/opened"
+            app:layout_constraintStart_toStartOf="@id/task_get_time_label"
+            app:layout_constraintTop_toBottomOf="@id/apt_closed_time_label" />
+
+        <TextView
+            android:id="@+id/apt_open_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{(viewModel.mCurrentTask.taskAptOpenTime == null) ? View.GONE : View.VISIBLE}"
+            android:text="@{viewModel.mCurrentTask.taskAptOpenTime.toLocaleString()}"
+            android:onClick="@{handler::onClick}"
+            android:textColor="@color/colorPrimary"
+            android:hint="date"
+            app:layout_constraintEnd_toEndOf="@id/task_get_time"
+            app:layout_constraintTop_toTopOf="@id/apt_open_time_label" />
+
+        <TextView
+            android:id="@+id/end_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/finished"
+            app:layout_constraintStart_toStartOf="@id/task_get_time_label"
+            app:layout_constraintTop_toBottomOf="@id/apt_open_time_label" />
+
+        <TextView
+            android:id="@+id/end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.mCurrentTask.taskEndTime.toLocaleString()}"
+            android:onClick="@{handler::onClick}"
+            android:textColor="@color/colorPrimary"
+            android:hint="date"
+            app:layout_constraintEnd_toEndOf="@id/task_get_time"
+            app:layout_constraintTop_toTopOf="@id/end_time_label" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/comment_hint"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/end_time_label">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etvComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:text="@={viewModel.mCurrentTask.taskComment}"
+                android:textAlignment="center" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

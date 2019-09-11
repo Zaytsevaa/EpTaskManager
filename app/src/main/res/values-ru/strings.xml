@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EP Task Manager</string>
+    <string name="action_add_sample_data">Добавить тестовые данные</string>
+    <string name="arrived">"Прибыл: "</string>
+    <string name="departed">"Отбыл: "</string>
+    <string name="finished">"Закончил: "</string>
+    <string name="closed">"Закрылась: "</string>
+    <string name="comment_hint">Комментарий</string>
+    <string name="opened">"Открылась: "</string>
+    <string name="task_received">"Задание получено: "</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="action_task_item_delete">Удалить</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+    <string name="open_close_dialog_text">Закрывалась ли аптека?</string>
+    <string name="task_complete">Задача уже выполнена</string>
+</resources>

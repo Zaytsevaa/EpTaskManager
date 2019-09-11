@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">EP Task Manager</string>
+    <string name="action_add_sample_data">Add sample data</string>
+    <string name="departed">"Departed: "</string>
+    <string name="arrived">"Arrived: "</string>
+    <string name="finished">"Finished: "</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="task_received">"Task Received: "</string>
+    <string name="closed">"Closed: "</string>
+    <string name="opened">"Opened: "</string>
+    <string name="comment_hint">Comment</string>
+    <string name="action_task_item_delete">Delete</string>
+    <string name="open_close_dialog_text">Did the pharmacy close?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="task_complete">Task complete</string>
+</resources>
